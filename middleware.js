@@ -11,6 +11,9 @@ const minutes_ago = (when) => Math.trunc((stamp() - when) / minute);
 // per_minute is the same as the ratelimit.per_minute argument
 // returns whether or not we should accept this request,
 // and has the sneaky side effect of updating the key's limit entry
+// NOTE: If this code were actually used in any sort of real server
+// it would most certainly cause a memory leak,
+// so pretend that this is really just an abstraction
 const may_request = (key, per_minute) => {
   const limit = limits[key] ?? { left: per_minute, accepted: stamp() };
 
