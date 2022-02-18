@@ -1,0 +1,12 @@
+{
+  "name": "skarmory",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "repository": "https://github.com/gastrodon/skarmory",
+  "author": "Eva <mail@gastrodon.io>",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
