@@ -1,13 +1,24 @@
 import express from "express";
 
-const app = express();
+import { ratelimit } from "./middleware.js";
 
-app.get("/match/:first/:last", async (request, response) => {
-  const first = request.params.first;
-  const last = request.params.last;
+const app = express();
+const limiter = ratelimit((it) => it.params.first, 60);
+
+app.get("/is-the-number-100/:it", limiter, async (request, response) => {
+  const it = parseInt(request.params.it, 10);
+
+  if (isNaN(it)) {
+    response
+      .status(400)
+      .send("that literally wasn't even a number what's wrong with you\n")
+      .end();
+
+    return;
+  }
 
   response
-    .send(last === first)
+    .send(it === 100 ? "yes :D\n" : "no :$\n")
     .end();
 });
 
