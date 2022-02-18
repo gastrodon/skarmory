@@ -3,7 +3,7 @@ import express from "express";
 import { ratelimit } from "./middleware.js";
 
 const app = express();
-const limiter = ratelimit((it) => it.params.first, 60);
+const limiter = ratelimit((it) => it.params.it, 60);
 
 app.get("/is-the-number-100/:it", limiter, async (request, response) => {
   const it = parseInt(request.params.it, 10);

@@ -45,6 +45,6 @@ export const ratelimit = (get_key, per_minute) =>
       return;
     }
 
-    response.status(429).send("stop that >:(").end();
+    response.status(429).send("stop that >:(\n").end();
     return;
   };
